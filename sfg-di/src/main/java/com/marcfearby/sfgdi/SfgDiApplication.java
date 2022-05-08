@@ -1,9 +1,6 @@
 package com.marcfearby.sfgdi;
 
-import com.marcfearby.sfgdi.controller.ConstructorInjectedController;
-import com.marcfearby.sfgdi.controller.MyController;
-import com.marcfearby.sfgdi.controller.PropertyInjectedController;
-import com.marcfearby.sfgdi.controller.SetterInjectedController;
+import com.marcfearby.sfgdi.controller.*;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.ApplicationContext;
@@ -14,9 +11,12 @@ public class SfgDiApplication {
 	public static void main(String[] args) {
 		ApplicationContext ctx = SpringApplication.run(SfgDiApplication.class, args);
 
+		I18nController i18nController = (I18nController) ctx.getBean("i18nController");
+		System.out.println(i18nController.sayHello());
+
 		MyController ctrl = (MyController)ctx.getBean("myController");
 
-		System.out.println("Use Spring to inject @Primary bean dependency:");
+		System.out.println("\nUse Spring to inject @Primary bean dependency:");
 		System.out.println(ctrl.sayHello());
 
 		System.out.println("\nUse Spring to inject property-based dependency:");
