@@ -9,7 +9,8 @@ public class ConstructorInjectedController {
 
     private final GreetingService greetingService;
 
-    // qualifier is needed because I now have three services which implement GreetingService interface
+    // The qualifier is needed because I now have three services which implement GreetingService interface
+    // Without the @Qualifier the @Primary PrimaryGreetingService will be used
     public ConstructorInjectedController(@Qualifier("constructorGreetingService") GreetingService greetingService) {
         this.greetingService = greetingService;
     }

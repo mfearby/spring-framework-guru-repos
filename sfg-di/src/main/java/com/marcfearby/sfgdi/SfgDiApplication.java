@@ -16,10 +16,10 @@ public class SfgDiApplication {
 
 		MyController ctrl = (MyController)ctx.getBean("myController");
 
-		String greeting = ctrl.sayHello();
-		System.out.println("Greeting was: " + greeting);
+		System.out.println("Use Spring to inject @Primary bean dependency:");
+		System.out.println(ctrl.sayHello());
 
-		System.out.println("\nUse Spring to inject property-based dependencies:");
+		System.out.println("\nUse Spring to inject property-based dependency:");
 		PropertyInjectedController propertyInjectedController = (PropertyInjectedController) ctx.getBean("propertyInjectedController");
 		System.out.println(propertyInjectedController.getGreeting());
 		// Results in this Exception: No bean named 'propertyInjectedController' available.
@@ -30,12 +30,12 @@ public class SfgDiApplication {
 		// however this error will throw "No beans of 'GreetingService' type found"
 		// until the @Service (or @Component) annotation is added to the GreetingServiceImpl (not interface)
 
-		System.out.println("\nUse Spring to inject setter-based dependencies:");
+		System.out.println("\nUse Spring to inject setter-based dependency:");
 		SetterInjectedController setterInjectedController = (SetterInjectedController) ctx.getBean("setterInjectedController");
 		System.out.println(setterInjectedController.getGreeting());
 		// Need to add @Controller and @Autowired to the setter method
 
-		System.out.println("\nUse Spring to inject constructor-based dependencies:");
+		System.out.println("\nUse Spring to inject constructor-based dependency:");
 		ConstructorInjectedController constructorInjectedController = (ConstructorInjectedController) ctx.getBean("constructorInjectedController");
 		System.out.println(constructorInjectedController.getGreeting());
 		// Only needs @Controller on the class. Adding @Autowired became optional with Spring >= 4.3 if the class has only one constructor
