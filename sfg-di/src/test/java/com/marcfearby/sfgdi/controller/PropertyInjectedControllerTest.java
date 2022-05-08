@@ -1,10 +1,8 @@
 package com.marcfearby.sfgdi.controller;
 
-import com.marcfearby.sfgdi.service.GreetingServiceImpl;
+import com.marcfearby.sfgdi.service.ConstructorGreetingService;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-
-import static org.junit.jupiter.api.Assertions.*;
 
 class PropertyInjectedControllerTest {
 
@@ -14,7 +12,7 @@ class PropertyInjectedControllerTest {
     void setUp() {
         // LEAST PREFERRED
         controller = new PropertyInjectedController();
-        controller.greetingService = new GreetingServiceImpl();
+        controller.greetingService = new ConstructorGreetingService();
     }
 
     @Test
