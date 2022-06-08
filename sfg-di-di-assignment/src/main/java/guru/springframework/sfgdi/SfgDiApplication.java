@@ -6,7 +6,8 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.ComponentScan;
 
-@ComponentScan({"guru.springframework.sfgdi", "guru.springframework.pets"})
+// No longer need @ComponentScan now that GreetingServiceConfig is loading all beans into the spring context
+//@ComponentScan({"guru.springframework.sfgdi", "guru.springframework.pets"})
 @SpringBootApplication
 public class SfgDiApplication {
 
