@@ -5,21 +5,20 @@ import guru.springframework.pets.PetServiceFactory;
 import guru.springframework.sfgdi.repositories.EnglishGreetingRepository;
 import guru.springframework.sfgdi.repositories.EnglishGreetingRepositoryImpl;
 import guru.springframework.sfgdi.services.*;
-import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.Configuration;
-import org.springframework.context.annotation.Primary;
-import org.springframework.context.annotation.Profile;
+import org.springframework.context.annotation.*;
 
+@ImportResource("classpath:sfgdi-config.xml")
 @Configuration
 public class GreetingServiceConfig {
 
-    // Do this in a @Configuration class to create a spring bean for a
-    // 3rd party library where you can't add a @Component on it yourself.
-    @Bean
+    // Now moved to XML spring config example in resources folder
+    // @Bean
     ConstructorGreetingService constructorGreetingService() {
         return new ConstructorGreetingService();
     }
 
+    // Do this in a @Configuration class to create a spring bean for a
+    // 3rd party library where you can't add a @Component on it yourself.
     @Bean
     PropertyInjectedGreetingService propertyInjectedGreetingService() {
         return new PropertyInjectedGreetingService();
