@@ -79,6 +79,14 @@ public class GreetingServiceConfig {
             @Value("${guru.password}") String password,
             @Value("${guru.jdbcUrl}") String jdbcUrl)
     {
+        // Adding an environment variable called GURU_USERNAME will
+        // automatically override a property named guru.username
+
+        // You can override properties on the command-line like so:
+        // --guru.password=PasswordFromCommandLine
+
+        // Vales given on the command-line take precedence over environment variables
+
         FakeDataSource fakeDataSource = new FakeDataSource();
         fakeDataSource.setUsername(username);
         fakeDataSource.setPassword(password);
