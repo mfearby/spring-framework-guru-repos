@@ -1,6 +1,7 @@
 # This file will overwrite settings below when "test" is included in the CSV list
 # of values for "spring.profiles.active" in the main applications.properties file
 
-guru.username=testuser
-guru.password=testpwd
-guru.jdbcUrl=test.url.com
+guru:
+  username: ymltestuser
+  password: ymltestpwd
+  jdbcUrl: yml.test.url.com
