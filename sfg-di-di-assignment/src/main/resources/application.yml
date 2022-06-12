@@ -1,8 +1,21 @@
 spring:
   profiles:
-    active: cat,EN,dev
+    active:
+      - cat
+      - EN
+      - prod
 
 guru:
   username: ymlusername
   password: ymlpassword
   jdbcUrl: yml.url.com
+
+# Demonstration of another YML configuration in the same file (preceded by three dashes)
+---
+spring:
+  profiles: prod
+
+guru:
+  username: ymlprodusername
+  password: ymlprodpassword
+  jdbcUrl: prod.yml.url.com
