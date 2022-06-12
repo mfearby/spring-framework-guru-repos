@@ -75,11 +75,13 @@ public class GreetingServiceConfig {
         return petServiceFactory.getPetService("cat");
     }
 
+
+// Before using SfgConfiguration as the only argument:
+//    @Value("${guru.username}") String username,
+//    @Value("${guru.password}") String password,
+//    @Value("${guru.jdbcUrl}") String jdbcUrl)
     @Bean
-    FakeDataSource fakeDataSource(
-            @Value("${guru.username}") String username,
-            @Value("${guru.password}") String password,
-            @Value("${guru.jdbcUrl}") String jdbcUrl)
+    FakeDataSource fakeDataSource(SfgConfiguration sfgConfig)
     {
         // Adding an environment variable called GURU_USERNAME will
         // automatically override a property named guru.username
@@ -90,9 +92,9 @@ public class GreetingServiceConfig {
         // Vales given on the command-line take precedence over environment variables
 
         FakeDataSource fakeDataSource = new FakeDataSource();
-        fakeDataSource.setUsername(username);
-        fakeDataSource.setPassword(password);
-        fakeDataSource.setJdbcUrl(jdbcUrl);
+        fakeDataSource.setUsername(sfgConfig.getUsername());
+        fakeDataSource.setPassword(sfgConfig.getPassword());
+        fakeDataSource.setJdbcUrl(sfgConfig.getJdbcUrl());
         return fakeDataSource;
     }
 }
