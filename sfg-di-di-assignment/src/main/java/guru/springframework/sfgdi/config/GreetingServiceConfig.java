@@ -7,11 +7,13 @@ import guru.springframework.sfgdi.repositories.EnglishGreetingRepository;
 import guru.springframework.sfgdi.repositories.EnglishGreetingRepositoryImpl;
 import guru.springframework.sfgdi.services.*;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.context.annotation.*;
 
 // Moved these to application.properties (which is automatically parsed by Spring _BOOT_)
 // @PropertySource("classpath:datasource.properties")
 
+@EnableConfigurationProperties(SfgConstructorConfig.class)
 @ImportResource("classpath:sfgdi-config.xml")
 @Configuration
 public class GreetingServiceConfig {
@@ -81,7 +83,7 @@ public class GreetingServiceConfig {
 //    @Value("${guru.password}") String password,
 //    @Value("${guru.jdbcUrl}") String jdbcUrl)
     @Bean
-    FakeDataSource fakeDataSource(SfgConfiguration sfgConfig)
+    FakeDataSource fakeDataSource(SfgConstructorConfig sfgConfig)
     {
         // Adding an environment variable called GURU_USERNAME will
         // automatically override a property named guru.username
